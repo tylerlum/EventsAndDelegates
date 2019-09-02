@@ -14,10 +14,8 @@ namespace EventsAndDelegates
 
     public class VideoEncoder
     {
-
-        // Setup delegate and event
-        public delegate void VideoEncoderEventHandler(object source, VideoEventArgs args);
-        public event VideoEncoderEventHandler VideoEncoded;
+        // Setup event handler
+        public event EventHandler<VideoEventArgs> VideoEncoded;
 
         public void Encode(Video video)
         {
