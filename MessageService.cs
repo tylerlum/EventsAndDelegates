@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace EventsAndDelegates
 {
-    class MessageService
+    public class MessageService
     {
-        public void OnVideoEncoded(object source, EventArgs e)
+        public void OnVideoEncoded(object source, VideoEventArgs e)
         {
-            Console.WriteLine("MessageService: Sending a message...");
+            Console.WriteLine($"MessageService: Sending a message for {e.Video.Title}...");
             Thread.Sleep(2000);
-            Console.WriteLine("MessageService: Message sent!");
+            Console.WriteLine($"MessageService: Message sent for {e.Video.Title}!");
         }
     }
 }

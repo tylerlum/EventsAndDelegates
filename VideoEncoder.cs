@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace EventsAndDelegates
 {
-    class VideoEncoder
+    public class VideoEventArgs : EventArgs
     {
+        public Video Video { get; set; }
+    }
+
+    public class VideoEncoder
+    {
+
         // Setup delegate and event
-        public delegate void VideoEncoderEventHandler(object source, EventArgs args);
+        public delegate void VideoEncoderEventHandler(object source, VideoEventArgs args);
         public event VideoEncoderEventHandler VideoEncoded;
 
         public void Encode(Video video)
@@ -21,15 +27,15 @@ namespace EventsAndDelegates
             Console.WriteLine("Encoding complete!");
 
             // "Publish"
-            OnVideoEncoded();
+            OnVideoEncoded(video);
         }
 
-        protected virtual void OnVideoEncoded()
+        protected virtual void OnVideoEncoded(Video video)
         {
             // Check if there are any subscribers
             if (VideoEncoded != null)
             {
-                VideoEncoded(this, EventArgs.Empty);
+                VideoEncoded(this, new VideoEventArgs() { Video = video });
             }
         }
     }

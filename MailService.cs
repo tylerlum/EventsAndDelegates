@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EventsAndDelegates
 {
-    class MailService
+    public class MailService
     {
-        public void OnVideoEncoded(object source, EventArgs e)
+        public void OnVideoEncoded(object source, VideoEventArgs e)
         {
             // Send virtual mail
-            Console.WriteLine("MailService: Sending an email...");
+            Console.WriteLine($"MailService: Sending an email for {e.Video.Title}...");
             Thread.Sleep(1000);
-            Console.WriteLine("MailService: Email Sent!");
+            Console.WriteLine($"MailService: Email Sent for {e.Video.Title}!");
         }
     }
 }
