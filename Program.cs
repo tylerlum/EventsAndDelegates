@@ -14,7 +14,7 @@ namespace EventsAndDelegates
             var videoEncoder = new VideoEncoder();
 
             videoEncoder.Encode(video);
-
+            Console.ReadLine();
         }
     }
 }
